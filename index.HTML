@@ -1,1 +1,223 @@
 <!-- Nicolas posada S 2510046-3744 -->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OnePage Simple - Tu Nombre</title>
+  <meta name="description" content="Onepage sencilla y responsiva - HTML único archivo">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#4f46e5;
+      --muted:#6b7280;
+      --bg:#0f172a;
+      --card:#0b1220;
+      --glass: rgba(255,255,255,0.03);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;color:#e6eef8;background:linear-gradient(180deg,#071029 0%, #081227 60%);-webkit-font-smoothing:antialiased}
+    header{position:fixed;top:0;left:0;right:0;backdrop-filter: blur(6px);background:linear-gradient(180deg, rgba(15,23,42,0.6), rgba(10,14,20,0.2));border-bottom:1px solid rgba(255,255,255,0.03);z-index:40}
+    .container{width:min(1100px,94%);margin:0 auto;padding:0 16px}
+
+    /* NAV */
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;color:white}
+    .brand .logo{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;color:white;font-weight:800}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px}
+    nav a:hover{color:white}
+    .btn-primary{background:var(--accent);padding:10px 14px;border-radius:10px;color:white;text-decoration:none;font-weight:700;box-shadow:0 6px 18px rgba(79,70,229,0.18)}
+
+    /* Hamburger (mobile) */
+    .hamb{display:none;border:0;background:transparent;color:white;font-size:22px}
+
+    /* HERO */
+    .hero{min-height:80vh;display:grid;align-items:center;padding:120px 0 80px}
+    .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center}
+    h1{font-size:38px;line-height:1.05;margin:0;color:white}
+    p.lead{color:var(--muted);margin:12px 0 18px;font-size:16px}
+    .actions{display:flex;gap:12px}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:16px;padding:18px;border:1px solid rgba(255,255,255,0.03)}
+    .profile{display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
+    .avatar{width:120px;height:120px;border-radius:16px;background:linear-gradient(135deg,#0ea5a4,#06b6d4);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:28px}
+
+    /* SECTIONS */
+    section{padding:72px 0}
+    .section-title{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+    .section-title h2{margin:0;color:white}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .feature{padding:18px;border-radius:12px;background:var(--card);border:1px solid rgba(255,255,255,0.02)}
+    .feature h3{margin:0 0 8px}
+    .muted{color:var(--muted);font-size:14px}
+
+    /* Portfolio */
+    .portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .shot{height:160px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;align-items:flex-end;padding:10px;color:white;font-weight:700}
+
+    /* CONTACT */
+    .contact-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:white}
+    textarea{min-height:120px;resize:vertical}
+    .submit{grid-column:span 2;text-align:right}
+
+    footer{padding:36px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.03)}
+
+    /* Responsive */
+    @media(max-width:900px){
+      .hero-grid{grid-template-columns:1fr;}
+      .grid-3{grid-template-columns:1fr 1fr}
+      .portfolio{grid-template-columns:1fr 1fr}
+      nav ul{display:none}
+      .hamb{display:inline-block}
+    }
+    @media(max-width:520px){
+      .grid-3{grid-template-columns:1fr}
+      .contact-form{grid-template-columns:1fr}
+      .avatar{width:96px;height:96px;font-size:22px}
+      h1{font-size:28px}
+    }
+
+    /* Smooth scroll behavior */
+    html{scroll-behavior:smooth}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">OP</div>
+        <div>
+          <div style="font-size:14px">OnePage</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">Diseño simple</div>
+        </div>
+      </div>
+      <nav>
+        <button class="hamb" id="hamb">☰</button>
+        <ul id="menu">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <a class="btn-primary" href="#contacto">Contratar</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>Construyo sitios web limpios y rápidos.<br><span style="color:var(--accent)">Onepage</span> lista para usar.</h1>
+          <p class="lead">Plantilla HTML simple, responsiva y fácil de editar — perfecta para portfolios, servicios o landing pages personales.</p>
+          <div class="actions">
+            <a class="btn-primary" href="#contacto">Contactar</a>
+            <a style="align-self:center;color:var(--muted);text-decoration:none;font-weight:700;">Ver portfolio →</a>
+          </div>
+          <div style="margin-top:22px;color:var(--muted);font-size:14px">Tecnologías: HTML5 • CSS3 • JS mínimo</div>
+        </div>
+        <aside class="card profile">
+          <div class="avatar">ND</div>
+          <div style="font-weight:700;color:white">Tu Nombre</div>
+          <div class="muted">Diseñador / Desarrollador web</div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <a class="btn-primary" href="#contacto">Trabajar juntos</a>
+            <a style="align-self:center;color:var(--muted);text-decoration:none;font-weight:700;">CV</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <div class="container">
+        <div class="section-title">
+          <h2>Servicios</h2>
+          <div style="flex:1"></div>
+        </div>
+        <div class="grid-3">
+          <div class="feature">
+            <h3>Diseño UI/UX</h3>
+            <p class="muted">Interfaces sencillas y usables, enfocadas en conversión y accesibilidad.</p>
+          </div>
+          <div class="feature">
+            <h3>Desarrollo Frontend</h3>
+            <p class="muted">HTML, CSS y JavaScript optimizado — carga rápida y responsive.</p>
+          </div>
+          <div class="feature">
+            <h3>Optimización</h3>
+            <p class="muted">Mejoras de performance, SEO técnico y buenas prácticas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <div class="container">
+        <div class="section-title">
+          <h2>Portfolio</h2>
+        </div>
+        <div class="portfolio">
+          <div class="shot">Proyecto A</div>
+          <div class="shot">Proyecto B</div>
+          <div class="shot">Proyecto C</div>
+          <div class="shot">Proyecto D</div>
+          <div class="shot">Proyecto E</div>
+          <div class="shot">Proyecto F</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contacto</h2>
+        </div>
+        <div class="card">
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('Formulario simulado. Copia el HTML y conecta a tu backend.');">
+            <input type="text" placeholder="Nombre" required>
+            <input type="email" placeholder="Correo" required>
+            <textarea placeholder="Mensaje" required></textarea>
+            <div class="submit"><button class="btn-primary" type="submit">Enviar mensaje</button></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div>© <strong>OnePage</strong> • Hecho con ♥</div>
+      <div class="muted">Diseño simple — copia y edita este archivo único</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const hamb = document.getElementById('hamb');
+    const menu = document.getElementById('menu');
+    hamb && hamb.addEventListener('click', ()=>{
+      if(menu.style.display==='flex') menu.style.display='none'; else menu.style.display='flex';
+      menu.style.flexDirection = 'column';
+      menu.style.background = 'transparent';
+      menu.style.position = 'absolute';
+      menu.style.right = '16px';
+      menu.style.top = '64px';
+      menu.style.padding = '12px';
+      menu.style.borderRadius = '8px';
+    });
+
+    // Simple scroll reveal
+    const reveal = ()=>{
+      document.querySelectorAll('section').forEach((s, i)=>{
+        const rect = s.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 60){ s.style.opacity = 1; s.style.transform='none'; }
+      });
+    }
+    document.querySelectorAll('section').forEach(s=>{ s.style.opacity=0; s.style.transform='translateY(18px)'; s.style.transition='all 700ms cubic-bezier(.2,.9,.2,1)'; });
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+  </script>
+</body>
+</html>
